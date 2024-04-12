@@ -13,20 +13,25 @@ const AddBook = ({ onBookAdded }) => {
     const closeModal = () => setIsOpen(false);
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        if (name === "title" || name === "price") {
-            setBook(prevBook => ({ ...prevBook, [name]: value }));
-        } else if (name === "authors[0].name") {
-            setBook(prevBook => ({
-                ...prevBook,
+        const value = event.target.value;
+        if (event.target.name === 'author') {
+            setBook({
+                ...book,
                 authors: [{ name: value }]
-            }));
-        } else if (name.startsWith("publisher.")) {
-            const field = name.split(".")[1];
-            setBook(prevBook => ({
-                ...prevBook,
-                publisher: { ...prevBook.publisher, [field]: value }
-            }));
+            });
+        } else if (event.target.name === 'publisherName' || event.target.name === 'publisherAddress') {
+            setBook({
+                ...book,
+                publisher: {
+                    ...book.publisher,
+                    [event.target.name === 'publisherName' ? 'name' : 'address']: value
+                }
+            });
+        } else {
+            setBook({
+                ...book,
+                [event.target.name]: value
+            });
         }
     };
 
@@ -97,7 +102,7 @@ const AddBook = ({ onBookAdded }) => {
                                                 Author Name
                                             </label>
                                             <input type='text'
-                                                name="authors[0].name"
+                                                name="author"
                                                 value={book.authors[0].name}
                                                 onChange={(e) => handleChange(e)}
                                                 className='h-10 w-96 border mt-2 px-2 py-2'></input>
@@ -107,7 +112,7 @@ const AddBook = ({ onBookAdded }) => {
                                                 Publisher Name
                                             </label>
                                             <input type='text'
-                                                name="publisher.name"
+                                                name="publisherName"
                                                 value={book.publisher.name}
                                                 onChange={(e) => handleChange(e)}
                                                 className='h-10 w-96 border mt-2 px-2 py-2'></input>
@@ -117,7 +122,7 @@ const AddBook = ({ onBookAdded }) => {
                                                 Publisher Address
                                             </label>
                                             <input type='text'
-                                                name="publisher.address"
+                                                name="publisherAddress"
                                                 value={book.publisher.address}
                                                 onChange={(e) => handleChange(e)}
                                                 className='h-10 w-96 border mt-2 px-2 py-2'></input>

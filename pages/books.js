@@ -8,7 +8,7 @@ const Books = () => {
     const BOOKS_API_BASE_URL = 'http://localhost:8080/api/v1/books/get';
     const [books, setBookList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [bookTitle, setBookTitle] = useState(null);
+    const [bookId, setBookId] = useState(null);
     const fetchBooks = async () => {
         setLoading(true);
         try {
@@ -30,10 +30,10 @@ const Books = () => {
         fetchBooks();
     }, []);
 
-    const deleteBook = async (e, title) => {
+    const deleteBook = async (e, id) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/v1/books/delete/' + title, {
+            const response = await fetch('http://localhost:8080/api/v1/books/delete/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,9 +48,9 @@ const Books = () => {
         }
     };
 
-    const editBook = async (e, title) => {
+    const editBook = async (e, id) => {
         e.preventDefault();
-        setBookTitle(title);
+        setBookId(id);
     };
 
 
@@ -63,10 +63,19 @@ const Books = () => {
                         <thead className='bg-gray-50'>
                             <tr>
                                 <th className='text-left font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
-                                    Book Title
+                                    Book ID
                                 </th>
                                 <th className='text-left font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
-                                    Book Price
+                                    Title
+                                </th>
+                                <th className='text-left font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
+                                    Authors
+                                </th>
+                                <th className='text-left font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
+                                    Publisher
+                                </th>
+                                <th className='text-left font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
+                                    Price
                                 </th>
                                 <th className='text-right font-medium text-gray-500 appercase tracking-wide py-3 px-6'>
                                     Actions
@@ -77,7 +86,7 @@ const Books = () => {
                             <tbody className='bg-white'>
                                 {books?.map((book) => (
                                     <Book book={book}
-                                        key={book.title}
+                                        key={book.id}
                                         deleteBook={deleteBook}
                                         editBook={editBook} />
                                 ))}
@@ -86,7 +95,7 @@ const Books = () => {
                     </table>
                 </div>
             </div>
-            <EditBook bookTitle={bookTitle} onBookUpdated={fetchBooks} />
+            <EditBook bookId={bookId} onBookUpdated={fetchBooks} />
         </>
     );
 };
