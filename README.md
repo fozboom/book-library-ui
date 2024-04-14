@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book Library Application
 
-## Getting Started
+This application is a user-friendly book library developed using Next.js and React. It interfaces with a Spring Boot backend and uses PostgreSQL for database management.
 
-First, run the development server:
+## Description
 
-```bash
+The application allows you to manage a collection of books, authors, and publishers. This includes adding new entries, editing existing ones, and deleting outdated records. The frontend is built with Next.js and React, providing a dynamic and interactive user interface.
+
+## Contents
+
+- [Running the Application](#running-the-application)
+- [Docker](#docker)
+- [Backend Repository](#backend-repository)
+- [Developer Contacts](#developer-contacts)
+
+## Running the Application
+
+To run the application, you need to have Node.js and npm installed on your machine. You can then clone the repository and run the application using the following commands:
+
+```sh
+git clone https://github.com/fozboom/book-library-ui.git
+cd book-library-ui
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will start and be accessible at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This application can also be run using Docker. The Dockerfile is included in the repository. To build and run the Docker image, use the following commands:
 
-## Learn More
+```sh
+docker build -t book_lib_frontend .   
+docker run -p 3000:3000 book_lib_frontend
+```
 
-To learn more about Next.js, take a look at the following resources:
+The application will start and be accessible at `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Backend Repository
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The backend code for this application is located in a separate repository. You can find it [here](https://github.com/fozboom/book-library-ui).
 
-## Deploy on Vercel
+## Developer Contacts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For any questions or suggestions, please contact the developer at <fozboom@gmail.com>.
