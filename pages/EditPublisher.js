@@ -8,11 +8,10 @@ const EditPublisher = ({ publisherId, onPublisherUpdated }) => {
         name: '',
         books: []
     });
-
     useEffect(() => {
         const fetchPublisher = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/v1/publishers/findById?id=' + publisherId, {
+                const response = await fetch(`http://localhost:8080/api/v1/publishers/findById?id=` + publisherId, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

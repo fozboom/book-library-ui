@@ -1,3 +1,4 @@
+import { publicRuntimeConfig } from '@/next.config';
 import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 
@@ -37,7 +38,7 @@ const AddBook = ({ onBookAdded }) => {
 
     const saveBook = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/api/v1/books/save', {
+        const response = await fetch(`http://localhost:8080/api/v1/books/save`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

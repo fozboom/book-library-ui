@@ -5,7 +5,7 @@ import AddPublisher from './AddPublisher';
 import EditPublisher from './EditPublisher';
 
 const Publishers = () => {
-    const PUBLISHERS_API_BASE_URL = 'http://localhost:8080/api/v1/publishers/get';
+    const PUBLISHERS_API_BASE_URL = `http://localhost:8080/api/v1/publishers/get`;
     const [publishers, setPublisherList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [publisherId, setPublisherId] = useState(null);
@@ -33,7 +33,7 @@ const Publishers = () => {
     const deletePublisher = async (e, id) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/v1/publishers/delete/' + id, {
+            const response = await fetch(`http://localhost:8080/api/v1/publishers/delete/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

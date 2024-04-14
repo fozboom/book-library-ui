@@ -8,11 +8,10 @@ const EditBook = ({ bookId, onBookUpdated }) => {
         title: '',
         price: 0
     });
-
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/v1/books/findById?id=' + bookId, {
+                const response = await fetch(`http://localhost:8080/api/v1/books/findById?id=` + bookId, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

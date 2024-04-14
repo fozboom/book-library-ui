@@ -5,7 +5,7 @@ import AddAuthor from './AddAuthor';
 import EditAuthor from './EditAuthor';
 
 const Authors = () => {
-    const AUTHORS_API_BASE_URL = 'http://localhost:8080/api/v1/authors/get';
+    const AUTHORS_API_BASE_URL = `http://localhost:8080/api/v1/authors/get`;
     const [authors, setAuthorList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [authorId, setAuthorId] = useState(null);
@@ -33,7 +33,7 @@ const Authors = () => {
     const deleteAuthor = async (e, id) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/v1/authors/delete/' + id, {
+            const response = await fetch(`http://localhost:8080/api/v1/authors/delete/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

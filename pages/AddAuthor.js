@@ -22,7 +22,7 @@ const AddAuthor = ({ onAuthorAdded }) => {
 
     const saveAuthor = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/api/v1/authors/save', {
+        const response = await fetch(`http://localhost:8080/api/v1/authors/save`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

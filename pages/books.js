@@ -5,7 +5,7 @@ import AddBook from './AddBook';
 import EditBook from './EditBook';
 
 const Books = () => {
-    const BOOKS_API_BASE_URL = 'http://localhost:8080/api/v1/books/get';
+    const BOOKS_API_BASE_URL = `http://localhost:8080/api/v1/books/get`;
     const [books, setBookList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [bookId, setBookId] = useState(null);
@@ -33,7 +33,7 @@ const Books = () => {
     const deleteBook = async (e, id) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/v1/books/delete/' + id, {
+            const response = await fetch(`http://localhost:8080/api/v1/books/delete/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
